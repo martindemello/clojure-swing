@@ -1,0 +1,16 @@
+---
+filter: erb
+---
+
+<% uv :lang => "scheme", :theme => 'twilight' do -%>
+
+(ns hello
+  (:import (javax.swing JFrame)))
+
+(let [frame (JFrame.)]
+   (.setSize frame 200 100)
+   (.setDefaultCloseOperation frame JFrame/EXIT_ON_CLOSE)
+   (.setTitle frame "Hello World!")
+   (.setVisible frame true))
+
+<% end -%>
