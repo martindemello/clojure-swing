@@ -44,3 +44,6 @@ And the same example in Clojure
 
 <%= render :partial => 'helloworld.clj', :guard => true %>
 
+h1. Simple BorderLayout example
+
+<%= render :partial => 'border.clj', :guard => true %>
