@@ -44,6 +44,49 @@ And the same example in Clojure
 
 <%= render :partial => 'helloworld.clj', :guard => true %>
 
+h1. Listeners
+
+<% uv :lang => "java", :theme => "twilight" do -%>
+public class Beeper ... implements ActionListener {
+    // argument to addActionListener is an object
+    // that implements ActionListener
+    button.addActionListener(this);
+
+    public void actionPerformed(ActionEvent e) {
+      makeBeepSound();
+    }
+}
+<% end %>
+
+and in clojure
+<% uv :lang => "scheme", :theme => "twilight" do -%>
+    (.addActionListener button
+      (proxy [ActionListener] []
+         (actionPerformed [e] (make-beep-sound))
+<% end %>
+
+h1. Listeners - Now with swing-utils
+<% uv :lang => "scheme", :theme => "twilight" do -%>
+  (ns examples.event
+    (:use (clojure.contrib
+        [swing-utils :only (add-action-listener)])))
+  
+  ;; Usage: (add-action-listener component f & args)
+  (add-action-listener button make-beep-sound))
+<% end %>
+
 h1. Simple BorderLayout example
 
 <%= render :partial => 'border.clj', :guard => true %>
+
+h1. Simple BorderLayout example
+
+!screenshot-border.png!
+
+h1. MigLayout
+
+<%= render :partial => 'miglayout.clj', :guard => true %>
+
+h1. MigLayout
+
+!screenshot-mig.png!

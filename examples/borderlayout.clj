@@ -25,3 +25,5 @@
     (add-components-to-pane pane)
     (.pack frame)
     (.setVisible frame true)))
+
+(border-example)

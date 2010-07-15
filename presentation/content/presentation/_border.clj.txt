@@ -1,14 +1,10 @@
 ---
 filter: erb
 ---
-<div style="font-size:50%">
+<div style="font-size:67%">
 <% uv :lang => "scheme", :theme => 'twilight' do -%>
 
 ; http://download.oracle.com/docs/cd/E17409_01/javase/tutorial/uiswing/layout/border.html
-(ns border-layout
-  (:import (java.awt BorderLayout Dimension ComponentOrientation))
-  (:import (javax.swing JButton JFrame)))
-
 (defn- add-components-to-pane
   [pane]
   (let [page-start (JButton. "page start")
@@ -19,7 +15,7 @@ filter: erb
     (do
       (.setComponentOrientation pane ComponentOrientation/RIGHT_TO_LEFT)
         (doto pane
-          (.add page-start BorderLayout/PAGE_START)
+          (.add page-start BorderLayout/PAGE_START) ; static class constant
           (.add center BorderLayout/CENTER)
           (.add line-start BorderLayout/LINE_START)
           (.add page-end BorderLayout/PAGE_END)
@@ -28,6 +24,7 @@ filter: erb
 
 (defn border-example []
   (let [frame (JFrame. "border example") pane (.getContentPane frame) ]
+	  ; components get added to the frame's content pane
     (add-components-to-pane pane)
     (.pack frame)
     (.setVisible frame true)))
