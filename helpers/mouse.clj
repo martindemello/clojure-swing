@@ -2,7 +2,7 @@
   (:import (SwingUtilities))
   (:import (java.awt.event MouseAdapter MouseListener KeyEvent)))
 
-(defn- double-click?
+(defn double-click?
   [event]
   (= 2 (.getClickCount event)))
 
