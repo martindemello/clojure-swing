@@ -1,0 +1,24 @@
+---
+filter: erb
+---
+<div style="font-size:75%">
+<% uv :lang => "scheme", :theme => 'twilight' do -%>
+(defn dynamic-non-editable-table
+  []
+  (let [ panel (miglayout
+     (JPanel.)
+     (JTextField. 20) {:id :search-key}
+     (JButton. "populate table") { :id :p-button } :span
+     (JButton. "clear table") { :id :c-button } :wrap
+     (JScrollPane. (JTable. my-dynamic-table-model)))
+   
+   {:keys [p-button c-button search-key] } (components panel) ]
+    (add-action-listener p-button populate-table search-key)
+    (add-action-listener c-button clear-table)
+    (doto (JFrame.)
+      (.add panel)
+      (.setResizable false)
+      (.pack)
+      (.setVisible true))))
+<% end -%>
+</div>
