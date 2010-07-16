@@ -15,3 +15,7 @@
 (defn item-deselected?
   [event]
   (= (.getStateChange event) ItemEvent/DESELECTED))
+
+(defn get-item
+  [event]
+  (.getItem event))
